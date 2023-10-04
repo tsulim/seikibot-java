@@ -1,5 +1,6 @@
 package com.tsulim.seikibot;
 
+import com.tsulim.seikibot.listeners.EventListener;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
@@ -34,6 +35,9 @@ public class seikibot {
         builder.setActivity(Activity.watching("your every move"));
         builder.enableIntents(GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT);
         shardManager = builder.build();
+
+        // Register listeners
+        shardManager.addEventListener(new EventListener());
     }
 
     /**
